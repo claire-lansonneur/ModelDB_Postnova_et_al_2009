@@ -3,7 +3,9 @@
 ## Simulation of a mathematical model of homeostatic regulation of sleep-wake cycles by hypocretin/orexin
 
 Date: 2017-04-11
+
 Author: Claire Lansonneur
+
 🧠💤
 
 Reproduction and extension of the two-neuron hypocretin/orexin model of sleep-wake regulation by [Postnova, Voigt & Braun (2009)](https://doi.org/10.1177/0748730409346655), written for my final paper in MATH 437 (Mathematical Methods in Biology, McGill University, April 2017).
@@ -13,8 +15,6 @@ In the model, an orexin neuron and a glutamate interneuron excite each other, so
 ![Two-neuron model: an external input (current pulse I_ext or circadian drive I_c) excites neuron A, which excites neuron B with orexin and glutamate; B excites A back with glutamate.](figures/two_neuron_model.png)
 
 *A: hypocretin/orexin neuron in the lateral hypothalamus. B: local glutamate interneuron. A is driven either by a current pulse (I<sub>ext</sub>) or by a circadian input (I<sub>c</sub>).*
-
-> **Status:** 2017 code. In progress: Python reimplementation that regenerates every figure.
 
 ## Content
 
@@ -30,8 +30,6 @@ In the model, an orexin neuron and a glutamate interneuron excite each other, so
 | `fig6_circadian.ode` | Skewed-sine circadian drive | Fig 6 |
 | `ext_circadian_sleep_deprivation.ode` | Sleep deprivation on the circadian model | extension |
 | `ext_24h_alarm_nap.ode` | Daily "alarm-clock" pulse with a nap | extension |
-
-The full list, including earlier variants, is in [legacy/README.md](legacy/README.md).
 
 ## Implementation
 
