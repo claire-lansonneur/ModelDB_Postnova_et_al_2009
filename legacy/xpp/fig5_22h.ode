@@ -1,11 +1,9 @@
-# Simulation of Postnova et al. (2009) model for
-reciprocal excitation on XPPAUT
+# HH-model Postnova et al. (2009)
 #
 # Parameters and Initial conditions
-par c=1
+par c=1, I1=0.9
 par tinc=7500, tdec=920, tgl=30, tox=300
-par gL=0.1, gna=3, gk=4, ggl=0.15,
-goxGL=0.2, gglOX=0.196
+par gL=0.1, gna=3, gk=4, ggl=0.15, goxGL=0.2, gglOX=0.196
 par EL=-60, Ena=50, Ek=-90, Esyn=50
 init M=1, v1=-60, v2=-60
 #
@@ -25,24 +23,17 @@ bGL'=(OXinf(v1)-bGL)/tgl
 aox'=(OXinf(v1)*M-aox)/tox
 #
 # Orexin and Glutamate voltages
-v1'=(I1*(f(t)+g(t)+h(t)+k(t))-gL*(v1-
-EL)-gna*m1*(v1-Ena)-gk*n1*(v1-Ek)-
-gglOX*bOX*(v1-Esyn))/c
-v2'=(-gL*(v2-EL)-gna*m2*(v2-Ena)-
-gk*n2*(v2-Ek)-ggl*bGL*(v2-Esyn)-
-goxGL*aox*(v2-Esyn))/c
+v1'=(I1*(f(t)+g(t)+h(t)+k(t))-gL*(v1-EL)-gna*m1*(v1-Ena)-gk*n1*(v1-Ek)-gglOX*bOX*(v1-Esyn))/c
+v2'=(-gL*(v2-EL)-gna*m2*(v2-Ena)-gk*n2*(v2-Ek)-ggl*bGL*(v2-Esyn)-goxGL*aox*(v2-Esyn))/c
 M'=(1-M)/tinc-M*OXinf(v1)/tdec
 #
-# Pulse function (4 500ms pulses to
-mimic the circadian cycle)
+# Pulse function
 f(t)=heav(t-t0)-heav(t-t1)
 g(t)=heav(t-t2)-heav(t-t3)
 h(t)=heav(t-t4)-heav(t-t5)
 k(t)=heav(t-t6)-heav(t-t7)
-par t0=500, t1=1000, t2=25500, t3=26000
-par t4=50500,t5=51000, t6=75500,
-t7=76000
-par I1=0.9
+par t0=500, t1=1000, t2=22500, t3=23000
+par t4=44500,t5=43000, t6=66500, t7=67000
 # Track current
 aux ibar=I1*(f(t)+g(t))
 @ total=80000, dt=0.1

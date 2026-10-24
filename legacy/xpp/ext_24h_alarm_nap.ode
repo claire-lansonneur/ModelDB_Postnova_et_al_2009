@@ -1,0 +1,47 @@
+# HH-model Postnova et al. (2009)
+#
+# Parameters and Initial conditions
+par c=1, I1=0.9
+par tinc=7500, tdec=920, tgl=30, tox=300
+par gL=0.1, gna=3, gk=4, ggl=0.15, goxGL=0.2, gglOX=0.196
+par EL=-60, Ena=50, Ek=-90, Esyn=50
+init M=1, v1=-60, v2=-60
+#
+# Voltage-dependencies
+m1=1/(1+exp(-0.25*(v1+25)))
+m2=1/(1+exp(-0.25*(v2+25)))
+n1inf(v1)=1/(1+exp(-0.25*(v1+25)))
+n2inf(v2)=1/(1+exp(-0.25*(v2+25)))
+OXinf(v1)=1/(1+exp(-(v1+20)))
+binf(v2)=1/(1+exp(-(v2+20)))
+#
+# Gating variables
+n1'=(n1inf(v1)-n1)/2
+n2'=(n2inf(v2)-n2)/2
+bOX'=(binf(v2)-bOX)/tgl
+bGL'=(OXinf(v1)-bGL)/tgl
+aox'=(OXinf(v1)*M-aox)/tox
+#
+# Orexin and Glutamate voltages
+v1'=(I1*(f(t)+h(t)+k(t)+ki(t))+I2*g(t)-gL*(v1-EL)-gna*m1*(v1-Ena)-gk*n1*(v1-Ek)-gglOX*bOX*(v1-Esyn))/c
+v2'=(-gL*(v2-EL)-gna*m2*(v2-Ena)-gk*n2*(v2-Ek)-ggl*bGL*(v2-Esyn)-goxGL*aox*(v2-Esyn))/c
+M'=(1-M)/tinc-M*OXinf(v1)/tdec
+#
+# Pulse function
+par I2=-0.49
+f(t)=heav(t-t0)-heav(t-t1)
+g(t)=heav(t-t2)-heav(t-t3)
+h(t)=heav(t-t4)-heav(t-t5)
+k(t)=heav(t-t6)-heav(t-t7)
+ki(t)=heav(t-t8)-heav(t-t9)
+#par t0=0, t1=500, t2=24000, t3=24500
+#par t4=48000,t5=48500, t6=72000, t7=72500
+par t0=0, t1=500, t4=24000, t5=24500, t6=48000, t7=48500
+par t2=5000, t3=6000, par t8=72000, t9=72500
+aux ibar=I1*(f(t)+h(t)+k(t)+ki(t))+g(t)*I2
+# Track current
+@ total=72000, dt=0.1
+@ bound=72000
+@ xhi=48000,ylo=-100,yhi=30
+done
+#80000
