@@ -10,7 +10,8 @@ Author: Claire Lansonneur
 
 Reproduction and extension of the two-neuron hypocretin/orexin model of sleep-wake regulation by [Postnova, Voigt & Braun (2009)](https://doi.org/10.1177/0748730409346655), written for my final paper in MATH 437 (Mathematical Methods in Biology, McGill University, April 2017).
 
-In the model, an orexin neuron and a glutamate interneuron excite each other, so a brief input can start firing that sustains itself (wake). Each orexin spike also weakens the orexin synapse (homeostatic variable **M** captures activity-dependent synaptic efficacy). Firing stops when M runs low (sleep), and M recovers during silence. Scripts reproduce the paper's pulse and circadian experiments, and extend them to naps and sleep deprivation.
+In the model, an orexin neuron and a glutamate interneuron excite each other, so a brief input can start firing that sustains itself (wake). Each orexin spike also weakens the orexin synapse (homeostatic variable **M** captures activity-dependent synaptic efficacy). Firing stops when M runs low (sleep), and M recovers during silence.
+**Scripts (1) reproduce the paper's pulse and circadian experiments, and (2) extend them to naps and sleep deprivation**.
 
 ![Two-neuron model: an external input (current pulse I_ext or circadian drive I_c) excites neuron A, which excites neuron B with orexin and glutamate; B excites A back with glutamate.](figures/two_neuron_model.png)
 
@@ -45,4 +46,6 @@ Cite the original model:
 
 ## License
 
-MIT for the code in this repository. The model is the scientific work of Postnova, Voigt and Braun (2009).
+- **Code:** The XPPAUT implementations and extensions are my original work, released under the [MIT License](LICENSE).
+- **Figure:** The original schematic in figures/two_neuron_model.png is © 2017 Claire Lansonneur and licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
+- **Scientific model:** The simulations reproduce and extend the mathematical model developed by Postnova, Voigt and Braun (2009). The original scientific work is credited to its authors.
